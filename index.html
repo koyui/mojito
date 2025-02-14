@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mojito: LLM-Aided Motion Instructor with Jitter-Reduced Inertial Tokens</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon_package/android-chrome-512x512.png">
+
+    <link rel="stylesheet" href="css/bootstrap-4.4.1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="fonts/avenir-next/stylesheet.css">
+    <link rel="stylesheet" href="fonts/segoe-print/stylesheet.css">
+    <link rel="stylesheet" href="css/window.css">
+    <link rel="stylesheet" href="css/carousel.css">
+    <link rel="stylesheet" href="css/selection_panel.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet"> -->
+    <link rel="stylesheet" href="css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="css/bulma-slider.min.css">
+    <!-- <link rel="stylesheet" href="css/bulma.min.css"> -->
+    <link rel="stylesheet" href="css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="css/index.css">
+
+    <script src="js/window.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/selection_panel.js"></script>
+    <script src="js/generation.js"></script>
+    <script src="js/editing.js"></script>
+    <script src="js/application.js"></script>
+    <script src="js/main.js"></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="js/fontawesome.all.min.js"></script>
+    <script src="js/bulma-carousel.min.js"></script>
+    <script src="js/bulma-slider.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/video_comparison.js" defer></script>
+  </head>
+
+  <!-- cover -->
+  <section>
+    <div class="jumbotron text-center mt-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2><b><span class="x-gradient-font">Mojito</span>: LLM-Aided Motion Instructor with<br>Jitter-Reduced Inertial Tokens</b></h2>
+            <h6>
+              <a href="https://cunkaixin.netlify.app" target="_blank">Ziwei Shan</a><sup>1,*</sup>,
+              <a href="https://tropinoneh.github.io/profile/" target="_blank">Yaoyu He</a><sup>1,*</sup>,
+              <a href="https://afterjourney00.github.io/" target="_blank">Chengfeng Zhao</a><sup>1,*,&dagger;</sup>,
+              <a href="https://alt-js.github.io/" target="_blank">Jiashen Du</a><sup>1</sup>,
+              <a href="https://zhanglele12138.github.io/" target="_blank">Jingyan Zhang</a><sup>1</sup>,
+              <a href="https://scholar.google.com/citations?user=YvwsqvYAAAAJ&hl=en" target="_blank">Qixuan Zhang</a><sup>1,2</sup>,
+              <a href="https://scholar.google.com/citations?user=R9L_AfQAAAAJ&hl=en" target="_blank">Jingyi Yu</a><sup>1,&Dagger;</sup>,
+              <a href="https://www.xu-lan.com/" target="_blank">Lan Xu</a><sup>1,&Dagger;</sup>
+            </h6>
+            <p style="text-align: center">
+              <sup>1</sup>ShanghaiTech University &nbsp;&nbsp;
+              <sup>2</sup>Deemos Technology
+              <br>
+              <i><sup>*</sup>Equal contributions</i>
+              <br>
+              <i><sup>&dagger;</sup>Project lead</i><i> &nbsp;&nbsp; <sup>&Dagger;</sup>Corresponding author</i>
+            </p>
+            <div class="row justify-content-center">
+              <div class="column">
+                <p class="mb-5"><a class="btn btn-large btn-light" href="https://arxiv.org/abs/2312.08869" role="button"  target="_blank">
+                  <i class="fa fa-file"></i> Paper </a> </p>
+              </div>
+              <div class="column">
+                <p class="mb-5"><a class="btn btn-large btn-light" href="https://www.youtube.com/watch?v=MdG00uakBa8" role="button"  target="_blank">
+                  <i class="fab fa-youtube"></i> Video </a> </p>
+              </div>
+              <div class="column">
+                <p class="mb-5"><a class="btn btn-large btn-light" href="https://github.com/AfterJourney00/mojito" role="button"  target="_blank">
+                  <i class="fab fa-github"></i> Code & Data </a> </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- abstract -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="row" style="margin-bottom:5px">
+            <div class="col" style="text-align:center">
+              <img src="images/teaser.png" width="90%">
+            </div>
+          </div>
+          <div id="abstract" class="x-gradient-block">
+            We are living in a world surrounded by diverse and “smart” devices with rich modalities of sensing ability. Conveniently capturing the interactions between us humans and these objects remains far-reaching. In this paper, we present I'm-HOI, a monocular scheme to faithfully capture the 3D motions of both the human and object in a novel setting: using a minimal amount of RGB camera and object-mounted Inertial Measurement Unit (IMU). It combines general motion inference and category-aware refinement. For the former, we introduce a holistic human-object tracking method to fuse the IMU signals and the RGB stream and progressively recover the human motions and subsequently the companion object motions. For the latter, we tailor a category-aware motion diffusion model, which is conditioned on both the raw IMU observations and the results from the previous stage under over-parameterization representation. It significantly refines the initial results and generates vivid body, hand, and object motions. Moreover, we contribute a large dataset with ground truth human and object motions, dense RGB inputs, and rich object-mounted IMU measurements. Extensive experiments demonstrate the effectiveness of I'm-HOI under a hybrid capture setting. Our dataset and code will be released to the community.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- pipeline -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="x-section-title"><div class="x-gradient-font">Pipeline</div></div>
+          <img src="images/pipeline.png" width="90%">
+        </div>
+      </div>
+      <br>
+      <p class="text-left">
+        Overview of our training pipeline. We quantize continuous and jittery IMU signals to a sequence of jitter-reduced and motion-aware inertial tokens 
+        by learning a IMU tokenizer through distribution matching strategy and adopt semantic aligned and LoRA fine-tuned LLM to generate precise, professional 
+        and stylistic text feedback for human motion analysis.
+      </p>
+    </div>
+  </section>
+
+  <!-- results -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="x-section-title"><div class="x-gradient-font">Demo Results</div></div>
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="item item-steve video-grid1">
+              <video poster="" id="steve gt_rgb" autoplay muted loop playsinline height="100%">
+                <source src="video/mojito_demo_1.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-steve video-grid1">
+              <video poster="" id="steve gt_rgb" autoplay muted loop playsinline height="100%">
+                <source src="video/mojito_demo_2.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-steve video-grid1">
+              <video poster="" id="steve gt_rgb" autoplay muted loop playsinline height="100%">
+                <source src="video/mojito_demo_3.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <p class="text-left">
+        Mojito delivers precise motion descriptions and instructions within seconds, markedly enhancing efficiency and user experience compared to vision-language models.  Here, we showcase the online interactions between user and our system for motion capture and analysis from streaming IMU data. The LLM running on our system backend responds to user's questions posted from web frontend instantly, bringing concise and professional feedback. The corresponding demonstration video and backend logging are placed aside for reference.
+      </p>
+    </div>
+  </section>
+
+  <!-- comparisons -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="x-section-title"><div class="x-gradient-font">Qualitative MoCap Comparisons under Noisy Conditions</div></div>
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="item item-steve video-grid1">
+              <video poster="" id="steve gt_rgb" autoplay muted loop playsinline height="100%">
+                <source src="video/mocap_comp_1.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-steve video-grid1">
+              <video poster="" id="steve gt_rgb" autoplay muted loop playsinline height="100%">
+                <source src="video/mocap_comp_2.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-steve video-grid1">
+              <video poster="" id="steve gt_rgb" autoplay muted loop playsinline height="100%">
+                <source src="video/mocap_comp_3.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <p class="text-left">
+        Compared to previous inertial posers, Mojito yields robust motion capture capabilities across diverse noisy input environments, which are commonly encountered in practical applications. Particularly, when the IMU sensor attached to the root joint is disturbed or missing, for example the three-point tracker setting in VR, our jitter-reduced inertial tokens are still capable of reconstructing reasonable full-body motions.
+      </p>
+    </div>
+  </section>
+
+  <!-- citation -->
+  <section>
+  <div class="container">
+    <div class="row ">
+      <div class="col-12">
+        <div class="x-section-title"><div class="x-gradient-font">Citation</div></div>
+        <p class="bibtex x-gradient-block">
+@InProceedings{shan2025mojito,
+  title   = {Mojito: LLM-Aided Motion Instructor with Jitter-Reduced Inertial Tokens},
+  author  = {Shan, Ziwei and He, Yaoyu and Zhao, Chengfeng and Du, Jiashen and Zhang, Jingyan and 
+             Zhang, Qixuan and Yu, Jingyi and Xu, Lan},
+  journal = {arXiv preprint arXiv:},
+  year    = {2025}
+}
+        </p>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <!-- bottom bar -->
+  <section>
+  <div id="bottombar">
+    <div><b>Mojito: LLM-Aided Motion Instructor with Jitter-Reduced Inertial Tokens</b></div>
+    <div>Thanks to <a href="https://lioryariv.github.io/" target="_blank">Lior Yariv</a> and <a href="https://jeffreyxiang.github.io/" target="_blank">Jianfeng Xiang</a> for the website template</div>
+  </div>
+  </section>
+
+</html>
