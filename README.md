@@ -6,8 +6,8 @@
   <a href="https://afterjourney00.github.io/" target="_blank">Chengfeng Zhao</a><sup>1,*,&dagger;</sup>,
   <a href="https://alt-js.github.io/" target="_blank">Jiashen Du</a><sup>1</sup>,
   <br>
-  <a href="https://scholar.google.com/citations?user=YvwsqvYAAAAJ&hl=en" target="_blank">Qixuan Zhang</a><sup>1,2</sup>,
   <a href="https://zhanglele12138.github.io/" target="_blank">Jingyan Zhang</a><sup>1</sup>,
+  <a href="https://scholar.google.com/citations?user=YvwsqvYAAAAJ&hl=en" target="_blank">Qixuan Zhang</a><sup>1,2</sup>,
   <a href="https://scholar.google.com/citations?user=R9L_AfQAAAAJ&hl=en" target="_blank">Jingyi Yu</a><sup>1,&Dagger;</sup>,
   <a href="https://www.xu-lan.com/" target="_blank">Lan Xu</a><sup>1,&Dagger;</sup>
 </p>
@@ -23,6 +23,9 @@
   <a href="https://arxiv.org/abs/"><img src='https://img.shields.io/badge/arXiv-Paper-red?logo=arxiv&logoColor=white' alt='arXiv'></a>
   <a href='https://koyui.github.io/mojito/'><img src='https://img.shields.io/badge/Project_Page-Website-green?logo=googlechrome&logoColor=white' alt='Project Page'></a>
 </p>
+<div align="center">
+  <img width="900px" src="./assets/teaser.png"/>
+</div>
 
 ## 🚀 Getting Started
 
