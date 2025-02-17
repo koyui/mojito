@@ -27,6 +27,9 @@
   <img width="900px" src="./assets/teaser.png"/>
 </div>
 
+## TODO
+- [ ] Release code and pretrained model.
+
 ## 🚀 Getting Started
 
 ### 1. Environment Setup
