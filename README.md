@@ -27,9 +27,6 @@
   <img width="900px" src="./assets/teaser.png"/>
 </div>
 
-## TODO
-- [ ] Release code and pretrained model.
-
 ## 🚀 Getting Started
 
 ### 1. Environment Setup
@@ -37,8 +34,8 @@
 We tested our environment on `Ubuntu 20.04 LTS` and `Windows 11` with `CUDA 12.1`.
 
 ```bash
-conda create python=3.10 --name simitor
-conda activate simitor
+conda create python=3.10 --name mojito
+conda activate mojito
 
 conda install pytorch==2.5.0 torchvision==0.20.0 torchaudio==2.5.0 pytorch-cuda=12.1 -c pytorch -c nvidia
 pip install -r requirements.txt
@@ -70,6 +67,19 @@ body_model/
 |----neutral/
 |------model.npz
 ```
+
+### 3. Download pretrained imu tokenizer model
+We are releasing the IMU tokenizer model [mojito_imu_tokenizer.pth](https://huggingface.co/Cunkaixin/mojito).
+To set up:
+1. Download the model checkpoint. 
+2. Create a `checkpoints/` directory in your project if it doesn't exist.
+3. Place the downloaded file in `checkpoints/mojito_imu_tokenizer.pth`.
+
+### 4. Example
+Run the processing script
+```bash
+python -m example --cfg configs/config_imu_tokenizer.yaml --nodebug
+``` 
 
 ## 🏄‍♂️ Contributors
 

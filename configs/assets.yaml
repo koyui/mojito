@@ -1,0 +1,22 @@
+CONFIG_FOLDER: configs # Config files path
+EXP_FOLDER: experiments # Experiment files saving path
+
+TEST:
+  FOLDER: results # Testing files saving path
+
+DATASET:
+  ROOT: your_preprocessed_data_path_here
+
+BODY_MODEL:
+  target: body_model.body_model.BodyModel
+  params:
+    bm_path: body_model/smplh/neutral/model.npz
+    num_betas: 10
+    batch_size: 1
+    model_type: smplh
+
+RENDER:
+  BLENDER_PATH: libs/blender-2.93.2-linux-x64/blender
+  SMPL_MODEL_PATH: deps/smpl/smpl_models/smpl
+  MODEL_PATH: deps/smpl/smpl_models/
+  FACES_PATH: deps/smplh/smplh.faces

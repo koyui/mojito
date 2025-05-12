@@ -1,0 +1,22 @@
+SEED_VALUE: 1234
+DEBUG: True
+FULL_CONFIG: false
+
+TRAIN:
+  SPLIT: train
+
+TEST:
+  SPLIT: test
+
+LOSS:
+  ABLATION:
+    RECONS_LOSS: 'l1_smooth'
+
+DATASET:
+  target: mojito.data.Dataloader.MojitoDataset
+
+LOGGER:
+  VAL_EVERY_STEPS: 1
+  WANDB:
+    params:
+      project: null

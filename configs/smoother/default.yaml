@@ -1,0 +1,15 @@
+target: mojito.archs.smoother.SmoothNetWrapper
+params:
+  model:
+    target: mojito.archs.tools.smooth_net.SmoothNet
+    params:
+      window_size: 32
+      output_size: 32
+      hidden_size: 512 
+      res_hidden_size: 128
+      num_blocks: 5
+      dropout: 0.25
+  body_representation: smpl
+  slide_window_size: 32
+  slide_window_step: 1
+  use_6d_smpl: True

@@ -1,0 +1,101 @@
+EXP_NAME: MOJITO_IMU_TOKENIZER
+ACCELERATOR: gpu
+NUM_NODES: 1
+DEVICE: [0]
+
+TRAIN:
+  # epoch configs
+  SWITCH_EPOCH: 200
+  END_EPOCH: 999999
+
+  # dataloader configs
+  BATCH_SIZE: 1
+  SHUFFLE: True
+  NUM_WORKERS: 0
+  DROP_LAST: True
+  PERSISTENT_WORKERS: False
+
+  # resuming configs
+  PRETRAINED: ''
+  RESUME: ''
+  RESUME_OPTIMIZER: False
+  RESUME_SCHEDULER: False
+
+  # checkpoint saving configs
+  CHECKPOINT_SAVE: 'ckpt/vae'
+  SAVE_PER: 20
+
+  # optimizer configs
+  OPTIM:
+    target: AdamW
+    params:
+      lr: 2e-4
+      betas: [0.9, 0.99]
+      weight_decay: 0.0
+
+  # lr scheduler configs
+  LR_SCHEDULER:
+    target: CosineAnnealingLR
+    params:
+      T_max: ${eval:${LOGGER.VAL_EVERY_STEPS} * 100}
+      eta_min: 1e-6
+
+TEST:
+  # checkpoint file path
+  CHECKPOINTS: checkpoints/mojito_imu_tokenizer.pth
+  
+  # save IMU tokens or test mocap
+  SAVE_TOKENS: False
+  START: 0
+  END: 83670
+  SAVE_PER: 5000
+
+DATASET:
+  # dataset configs
+  target: mojito.data.imu_tokenizer_dataset.MojitoIMUTokenizerDataset
+  NAME_LIST:
+    - 3DPW
+    # - BABEL
+    # - EC3D
+    # - Fit3D
+    # - FLAG3D
+    # - Human3.6m
+    # - InterHuman
+    # - motionx
+    # - MOYO
+    # - PICO-FreeDancing
+    # - TotalCapture
+  
+  # data representation configs
+  NFEATS_MOTION: 271
+  NFEATS_IMU: 72
+
+  # data clip configs
+  SEQ_LEN: 60
+  MIN_MOTION_LEN: 40
+
+LOSS:
+  LAMBDA_FEATURE: 1.0
+  LAMBDA_COMMIT: 0.02
+  LAMBDA_CONTACT: 0.01
+  LAMBDA_ZIPF: 0.2
+  LAMBDA_MATCHING: 1
+  LAMBDA_DIST: 1.0
+  ABLATION:
+    RECONS_LOSS: 'l1_smooth'
+
+MODEL:
+  target: mojito.models.imu_tokenizer.MojitoTokenizer
+  params:
+    vae_model: ${vq.default}
+    smoother: ${smoother.default}
+    nfeats_motion: ${DATASET.NFEATS_MOTION}
+    nfeats_imu: ${DATASET.NFEATS_IMU}
+    motion_codebook_size: 1024
+    imu_codebook_size: 1024
+
+LOGGER:
+  VAL_EVERY_STEPS: 1
+  WANDB:
+    params:
+      project: mojito
